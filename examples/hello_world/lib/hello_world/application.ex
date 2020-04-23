@@ -25,8 +25,10 @@ defmodule HelloWorld.Application do
           {Task, :start_link,
            [
              fn ->
-               Horde.DynamicSupervisor.wait_for_quorum(HelloWorld.HelloSupervisor, 30_000)
-               Horde.DynamicSupervisor.start_child(HelloWorld.HelloSupervisor, HelloWorld.SayHello)
+               nil
+
+               #               Horde.DynamicSupervisor.wait_for_quorum(HelloWorld.HelloSupervisor, 30_000)
+               #               Horde.DynamicSupervisor.start_child(HelloWorld.HelloSupervisor, HelloWorld.SayHello)
              end
            ]}
       }
@@ -42,17 +44,17 @@ defmodule HelloWorld.Application do
 
   defp registry_members do
     [
-      {HelloWorld.HelloRegistry, :"count1@127.0.0.1"},
-      {HelloWorld.HelloRegistry, :"count2@127.0.0.1"},
-      {HelloWorld.HelloRegistry, :"count3@127.0.0.1"}
+      {HelloWorld.HelloRegistry, :"count1@127.0.0.1"}
+      #      {HelloWorld.HelloRegistry, :"count2@127.0.0.1"},
+      #      {HelloWorld.HelloRegistry, :"count3@127.0.0.1"}
     ]
   end
 
   defp supervisor_members do
     [
-      {HelloWorld.HelloSupervisor, :"count1@127.0.0.1"},
-      {HelloWorld.HelloSupervisor, :"count2@127.0.0.1"},
-      {HelloWorld.HelloSupervisor, :"count3@127.0.0.1"}
+      {HelloWorld.HelloSupervisor, :"count1@127.0.0.1"}
+      #      {HelloWorld.HelloSupervisor, :"count2@127.0.0.1"},
+      #      {HelloWorld.HelloSupervisor, :"count3@127.0.0.1"}
     ]
   end
 end
